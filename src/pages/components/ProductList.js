@@ -7,21 +7,20 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
 
-export default function ProductList({ items, setShoppingCart }) {
+function ProductList({ items, handleItemClick }) {
   return (
     <div style={{maxWidth: '25%', margin: 'auto', backgroundColor: 'white', marginTop: '4%'}}> 
-    {console.log(items)}
       <List dense={ true }>
         {
           items.map((item) => (
-            <ListItem>
+            <ListItem key={item.uid}>
               <ListItemText
                 primary={ item.blend_name }
                 secondary={ item.notes }
               />
               <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="delete">
-                  <AddShoppingCartIcon />
+                <IconButton onClick={ () => handleItemClick(item.blend_name) } edge="end">
+                  {item.inCart ? <RemoveShoppingCartIcon /> : <AddShoppingCartIcon />}
                 </IconButton>
               </ListItemSecondaryAction>
             </ListItem>
@@ -31,3 +30,5 @@ export default function ProductList({ items, setShoppingCart }) {
     </div>
   )
 }
+
+export default  React.memo(ProductList)

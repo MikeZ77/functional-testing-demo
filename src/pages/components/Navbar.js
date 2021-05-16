@@ -7,7 +7,7 @@ export default function Navbar({ shoppingCart }) {
   return (
   <AppBar position="static" style={{alignItems: 'flex-end'}}>
     <Toolbar>
-      <Badge badgeContent={shoppingCart} color="secondary" invisible={ shoppingCart || true }>
+      <Badge badgeContent={shoppingCart} color="secondary" invisible={ !(shoppingCart && true) }>
         <ShoppingCartIcon />
       </Badge>
     </Toolbar>
