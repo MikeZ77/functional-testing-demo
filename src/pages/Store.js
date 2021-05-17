@@ -9,6 +9,7 @@ export default function Store() {
   const [shoppingCart, setShoppingCart] = useState(0)
   const [items, setItems] = useState([])
   const [open, setOpen] = useState(false)
+  const [alertInfo, setAlertInfo] = useState({ message: null, type: null })
 
   useEffect(() => {
     (async () => {
@@ -21,16 +22,26 @@ export default function Store() {
     })()
   }, [])
 
-  const handleItemClick = useCallback((item) => {
-    setShoppingCart((count) => count + 1)
+  const handleItemClick = useCallback((index) => {
+
+    setItems(items.map((item, i) => {
+      return (index === i ? {...item, inCart: !items[i].inCart} : { ...item })
+    }))
+    setAlertInfo(
+      { 
+        message: `Item ${items[index].blend_name} has been ${items[index].inCart ? 'removed from' : 'added to'} the cart.`,
+        type: items[index].inCart ? 'error' : 'success'
+      }
+    )
     setOpen(true)
-  }, [])
+    setShoppingCart((count) => items[index].inCart ? count - 1 : count + 1)
+  }, [items])
 
   return (
     <div>
       <Navbar shoppingCart={ shoppingCart }/>
       <ProductList items={ items } handleItemClick={ handleItemClick }/>
-      { open && <Message open={ open } setOpen={ setOpen } message={ 'Test!' } type={ 'success' }/> }
+      { open && <Message open={ open } setOpen={ setOpen } { ...alertInfo } /> }
     </div>
   )
 }

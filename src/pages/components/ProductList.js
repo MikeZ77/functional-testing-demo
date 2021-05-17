@@ -12,14 +12,14 @@ function ProductList({ items, handleItemClick }) {
     <div style={{maxWidth: '25%', margin: 'auto', backgroundColor: 'white', marginTop: '4%'}}> 
       <List dense={ true }>
         {
-          items.map((item) => (
+          items.map((item, i) => (
             <ListItem key={item.uid}>
               <ListItemText
                 primary={ item.blend_name }
                 secondary={ item.notes }
               />
               <ListItemSecondaryAction>
-                <IconButton onClick={ () => handleItemClick(item.blend_name) } edge="end">
+                <IconButton onClick={ () => handleItemClick(i) } edge="end">
                   {item.inCart ? <RemoveShoppingCartIcon /> : <AddShoppingCartIcon />}
                 </IconButton>
               </ListItemSecondaryAction>
