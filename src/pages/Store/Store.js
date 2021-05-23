@@ -16,7 +16,7 @@ export default function Store() {
   useEffect(() => {
     (async () => {
       try {
-        const data = await axios.get('https://random-data-api.com/api/coffee/random_coffee?size=20')
+        const data = await axios.get('https://random-data-api.com/api/coffee/random_coffee?size=5')
         setItems(data.data.map(item => ({ ...item, inCart: false })))
       }catch(error) {
         console.error(error)

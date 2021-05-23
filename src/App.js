@@ -1,4 +1,4 @@
-import Store from './pages/Store'
+import Store from './pages/Store/Store'
 
 function App() {
   return (
