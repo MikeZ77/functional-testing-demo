@@ -6,18 +6,22 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-export default function Message( { open, setOpen, message, type } ) {
+export default function Message( { open, setOpen, setCurrentSnack, message, type } ) {
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
     setOpen(false);
-  };
+  }
+
+  const handleExited = () => {
+    setCurrentSnack(false)
+  }
 
   return (
     <div>
-      <Snackbar open={open} autoHideDuration={6000} onClose={ handleClose }>
+      <Snackbar open={open} autoHideDuration={6000} onClose={ handleClose } onExited={ handleExited }>
         <Alert onClose={ handleClose } severity={ type }>
           { message }
         </Alert>
