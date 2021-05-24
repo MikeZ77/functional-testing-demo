@@ -2,7 +2,7 @@ import { rest } from 'msw'
 
 export const handlers = 
   [
-    rest.get('api/coffee/random_coffee?size=5', (req, res, ctx) => {
+    rest.get('https://random-data-api.com/api/coffee/random_coffee', (req, res, ctx) => {
       return res(
         ctx.json(
         [

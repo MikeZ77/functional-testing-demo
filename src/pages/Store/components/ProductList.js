@@ -19,7 +19,7 @@ function ProductList({ items, handleItemClick }) {
                 secondary={ item.notes }
               />
               <ListItemSecondaryAction>
-                <IconButton onClick={ () => handleItemClick(i) } edge="end">
+                <IconButton onClick={ () => handleItemClick(i) } edge='end' aria-pressed={ item.inCart }>
                   {item.inCart ? <RemoveShoppingCartIcon /> : <AddShoppingCartIcon />}
                 </IconButton>
               </ListItemSecondaryAction>
