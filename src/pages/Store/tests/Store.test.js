@@ -9,7 +9,7 @@ test('workflow for adding and removing items to the cart', async () => {
   const cartCount = screen.getByTestId('cart-count')
   expect(cartCount).not.toBeVisible()
 
-  // There should be 10 list items  
+  // There should be 5 list items  
   const itemList = await screen.findAllByRole('listitem')
   expect(itemList).toHaveLength(5)
 
