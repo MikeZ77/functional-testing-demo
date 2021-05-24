@@ -22,7 +22,7 @@ export default function Message( { open, setOpen, setCurrentSnack, message, type
   return (
     <div>
       <Snackbar open={open} autoHideDuration={6000} onClose={ handleClose } onExited={ handleExited }>
-        <Alert onClose={ handleClose } severity={ type } aria-labelledby={ message }>
+        <Alert onClose={ handleClose } severity={ type } aria-label={ message }>
           { message }
         </Alert>
       </Snackbar>
